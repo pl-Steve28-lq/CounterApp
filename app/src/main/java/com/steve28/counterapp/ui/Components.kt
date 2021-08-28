@@ -21,8 +21,7 @@ import androidx.compose.foundation.layout.*
 object Components {
     @Composable
     fun AutoSizeText(
-        text: String,
-        size: TextUnit,
+        text: String, size: TextUnit,
         modifier: Modifier = Modifier
     ) {
         val sp = remember(text) { mutableStateOf(size) }
@@ -34,21 +33,20 @@ object Components {
             style = TextStyle(fontSize = sp.value),
             softWrap = false,
             onTextLayout = { textLayoutResult ->
-                if (textLayoutResult.didOverflowWidth) {
-                    sp.value = sp.value * 0.9
-                } else {
-                    readyToDraw.value = true
-                }
+                if (textLayoutResult.didOverflowWidth) { sp.value = sp.value * 0.9 }
+                else { readyToDraw.value = true }
             }
         )
     }
 
     @Composable
-    fun BaseButton(modifier: Modifier = Modifier, text: String,
-                   color: Color, size: TextUnit,
-                   border: Dp, onClick: () -> Unit
+    fun BaseButton(
+        modifier: Modifier = Modifier, text: String,
+        color: Color, size: TextUnit,
+        border: Dp, onClick: () -> Unit
     ) {
-        OutlinedButton(onClick = onClick,
+        OutlinedButton(
+            onClick = onClick,
             modifier = modifier,
             shape = CircleShape,
             border = BorderStroke(border, Color.White),
@@ -61,9 +59,10 @@ object Components {
     }
 
     @Composable
-    fun RoundButton(width: Dp, height: Dp, text: String,
-                    color: Color = Color.Black.copy(alpha = 0.5f),
-                    size: TextUnit = 30.sp, onClick: () -> Unit
+    fun RoundButton(
+        width: Dp, height: Dp, text: String,
+        color: Color = Color.Black.copy(alpha = 0.5f),
+        size: TextUnit = 30.sp, onClick: () -> Unit
     ) {
         BaseButton(
             modifier = Modifier.width(width).height(height),
@@ -76,9 +75,10 @@ object Components {
     }
 
     @Composable
-    fun CircleButton(radius: Dp, text: String, size: TextUnit = 30.sp,
-                     color: Color = Color.Black.copy(alpha = 0.5f),
-                     border: Dp = 2.dp, onClick: () -> Unit = {}
+    fun CircleButton(
+        radius: Dp, text: String, size: TextUnit = 30.sp,
+        color: Color = Color.Black.copy(alpha = 0.5f),
+        border: Dp = 2.dp, onClick: () -> Unit = {}
     ) {
         BaseButton(
             modifier = Modifier.size(radius),
