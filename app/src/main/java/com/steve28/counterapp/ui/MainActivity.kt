@@ -44,19 +44,24 @@ class MainActivity: ComponentActivity() {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Components.CircleButton(
+            Components.CircularButton(
                 radius = 200.dp, text = "${state.value}", size = 100.sp, color = Color.Transparent
             ) { interval.value = if (interval.value == 10000) 1 else interval.value*10 }
+
             Components.Space(40.dp)
+
             Row(horizontalArrangement = Arrangement.spacedBy(40.dp)) {
-                Components.CircleButton(
+                Components.CircularButton(
                     radius = 100.dp, text = "+${interval.value}", size = 40.sp, border = 5.dp
                 ) { next(state.applyEvent(CounterEvent.INCREASE(interval.value))) }
-                Components.CircleButton(
+                
+                Components.CircularButton(
                     radius = 100.dp, text = "-${interval.value}", size = 35.sp, border = 5.dp
                 ) { next(state.applyEvent(CounterEvent.DECREASE(interval.value))) }
             }
+
             Components.Space(40.dp)
+
             Components.RoundButton(
                 width = 180.dp, height = 70.dp, text = "Clear", color = Color.DarkGray
             ) { next(state.applyEvent(CounterEvent.CLEAR)) }

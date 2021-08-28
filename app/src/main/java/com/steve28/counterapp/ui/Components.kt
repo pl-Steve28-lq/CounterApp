@@ -75,7 +75,7 @@ object Components {
     }
 
     @Composable
-    fun CircleButton(
+    fun CircularButton(
         radius: Dp, text: String, size: TextUnit = 30.sp,
         color: Color = Color.Black.copy(alpha = 0.5f),
         border: Dp = 2.dp, onClick: () -> Unit = {}
